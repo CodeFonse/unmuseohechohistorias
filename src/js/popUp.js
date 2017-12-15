@@ -1,6 +1,5 @@
 class popUp {
     constructor() {
-      this.info;
       this.font_loaded = false;
       this.myFont = loadFont("../../Assets/Fonts/Roboto-Bold.ttf", () => {
         this.font_loaded = true;
@@ -31,7 +30,7 @@ class popUp {
       textFont(this.myFont, 14);
       text(`${splitString[1]} | ${splitString[2]}`, x, y - 6);
       fill(150);
-      textFont(myFontTwo, 12);
+      textFont(font_one, 12);
       text_lines.forEach((txt, index, array) => {
         text(`${txt.trim()}`, x + space_text / 2, y + 16 + 16 * index);
       });
