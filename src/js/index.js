@@ -67,7 +67,7 @@ function aviable_positions(img) {
   });
 }
 function draw() {
-  background(100);
+  background(255);
   noStroke();
   draw_form();
   show_info();
@@ -81,8 +81,8 @@ function mousePressed() {
     mouseY >= y_button &&
     mouseY <= y_button + h_button
   ) {
-  }
-  animateForms();
+    animateForms();
+  }  
 }
 
 function animateForms() {
@@ -132,3 +132,4 @@ function captureUniqueForm() {
   });
   return _form;
 }
+

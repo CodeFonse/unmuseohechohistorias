@@ -4,7 +4,10 @@ class Form {
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
     this.old_position = createVector(position.x, position.y);
-    this.position = position;
+    this.position = createVector(
+      random(-200, 700),
+      random(-200, 700)
+    );
     this.info = info;
     this.color = img_color.get(position.x, position.y);
     this.angle = random(10000);
@@ -50,7 +53,7 @@ class Form {
 
   changeTarget(steer) {
     if (steer) {
-      this.target = createVector(mouseX, mouseY);
+      this.target = createVector(285, 260);
     } else {
       this.target = this.old_position;
     }
