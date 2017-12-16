@@ -119,20 +119,7 @@ let interval = setInterval(() => {
 }, transition_time);
 
 function show_info() {
-  forms.forEach(form => {
-    if (form.getPosition()) {
-      let d = dist(
-        form.getPosition().x + global_x,
-        form.getPosition().y + global_y,
-        mouseX,
-        mouseY
-      );
-      if (d < 5) {
-        form_temp = form;
-      }
-    }
-  });
-
+ captureUniqueForm();
   if (form_temp) {
     let form_temp_dist = dist(
       form_temp.getPosition().x + global_x,
@@ -147,4 +134,20 @@ function show_info() {
     }
     pop_up.show(true, mouseX, mouseY, form_temp.getInfo());
   }
+}
+
+function captureUniqueForm(){
+  forms.forEach(form => {
+    if (form.getPosition()) {
+      let d = dist(
+        form.getPosition().x + global_x,
+        form.getPosition().y + global_y,
+        mouseX,
+        mouseY
+      );
+      if (d < 5) {
+        form_temp = form;
+      }
+    }
+  });
 }
