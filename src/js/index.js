@@ -4,17 +4,14 @@ let database,
   img_color,
   img_background,
   pop_up = {},
-  form_temp,
   font_one,
   global_x = 50,
   global_y = 100,
-  transition = 0,
-  transition_time = 0, //milliseconds
-  ready = true,
   x_button = 280,
   y_button = 650,
-  w = 80,
-  h = 35;
+  w_button = 80,
+  h_button = 35;
+animated = false;
 
 function preload() {
   database = loadStrings("../../Assets/database.txt"); //original
@@ -26,7 +23,7 @@ function preload() {
 
 function setup() {
   let c = createCanvas(1200, 700);
-  c.parent("sketch-holder");
+  c.parent("root");
   pixelDensity(1);
   initialPosition();
   pop_up = new popUp();
@@ -39,7 +36,7 @@ function initialPosition() {
         let positon = ceil(random(positions.length));
         let vector_pos = positions[positon];
         if (vector_pos) {
-          forms.push(new Form(vector_pos, data, img_color, null, null));
+          forms.push(new Form(vector_pos, data, img_color));
           positions.splice(positon, 1);
         }
       });
@@ -69,74 +66,57 @@ function aviable_positions(img) {
     resolve(positions);
   });
 }
-
 function draw() {
-  background(255);
+  background(100);
   noStroke();
   draw_form();
-  if (ready) {
-    show_info();
-    filter_button();
-  }
+  show_info();
+  filter_button();
 }
 
 function mousePressed() {
   if (
     mouseX >= x_button &&
-    mouseX <= x_button + w &&
+    mouseX <= x_button + w_button &&
     mouseY >= y_button &&
-    mouseY <= y_button + h
+    mouseY <= y_button + h_button
   ) {
-    console.log("filtering");
   }
+  animateForms();
+}
+
+function animateForms() {
+  animated = !animated;
+  forms.forEach(form => {
+    form.changeTarget(animated);
+  });
 }
 
 function filter_button() {
   noStroke();
   fill(255, 0, 0);
-  rect(x_button, y_button, w, h);
+  rect(x_button, y_button, w_button, h_button);
   fill(255);
   textFont(font_one, 18);
   text("filtrar", x_button + 22, y_button + 22);
 }
 
 function draw_form() {
-  tint(255, 100); //opacity image background
   image(img_background, 0, 0);
-  tint(255, transition); //opacity fade in effect
   forms.forEach(form => {
-    form.show(transition);
+    form.show();
   });
 }
-//Transition
-let interval = setInterval(() => {
-  if (transition < 255) {
-    transition++;
-  } else {
-    ready = true;
-    clearInterval(interval);
-  }
-}, transition_time);
 
 function show_info() {
- captureUniqueForm();
-  if (form_temp) {
-    let form_temp_dist = dist(
-      form_temp.getPosition().x + global_x,
-      form_temp.getPosition().y + global_y,
-      mouseX,
-      mouseY
-    );
-    if (form_temp_dist > 5) {
-      pop_up.setInfo();
-      form_temp = null;
-      return;
-    }
-    pop_up.show(true, mouseX, mouseY, form_temp.getInfo());
+  let _form = captureUniqueForm();
+  if (_form) {
+    pop_up.show(true, mouseX, mouseY, _form.getInfo());
   }
 }
 
-function captureUniqueForm(){
+function captureUniqueForm() {
+  let _form = null;
   forms.forEach(form => {
     if (form.getPosition()) {
       let d = dist(
@@ -146,8 +126,9 @@ function captureUniqueForm(){
         mouseY
       );
       if (d < 5) {
-        form_temp = form;
+        _form = form;
       }
     }
   });
+  return _form;
 }

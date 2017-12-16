@@ -21,7 +21,7 @@ body{
     margin-left: 80px;
 }
 
-#sketch-holder{
+#root{
     position: absolute;
     z-index: -1;
     width: 100%;
