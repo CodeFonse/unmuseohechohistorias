@@ -1,25 +1,31 @@
 class Form {
   constructor(position, info, img_color) {
-    this.group=split(info, '/')[0]  
+    this.group = split(info, "/")[0];
+    this.position_group = {};
     this.target = position;
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
     this.old_position = createVector(position.x, position.y);
-    this.position = createVector(
-      random(-200, 700),
-      random(-200, 700)
-    );
+    this.position = createVector(random(-200, 700), random(-200, 700));
     this.info = info;
     this.color = img_color.get(position.x, position.y);
     this.angle = random(10000);
     this.size = 1.5;
+    this.visible = false;
+    this.postion_temp = position
   }
-  show() {    
-    this.animate();
-    this._form(this.position.x + global_x, this.position.y + global_y, 10, 10,0.05);
+  show() {
+      this.animate();
+      this._form(
+        this.position.x + global_x,
+        this.position.y + global_y,
+        10,
+        10,
+        0.05
+      );    
   }
-  _showFilter(x,y){
-    this._form(x, y, 10, 10, 0.01)
+  _showFilter(x, y) {
+    this._form(x, y, 10, 10, 0.005);
   }
   _form(x, y, w, h, vel) {
     this.changeSize(x, y);
@@ -30,7 +36,7 @@ class Form {
     rectMode(CENTER);
     rect(0, 0, w * this.size, h * this.size);
     this.angle += vel;
-    pop();   
+    pop();
   }
 
   changeSize(x, y) {
@@ -45,7 +51,6 @@ class Form {
       let m = map(d, 0, 100, 0, maxspeed);
       desired.setMag(m);
     }
-    // desired.setMag(2);
     let steer = p5.Vector.sub(desired, this.velocity);
     steer.limit(0.1);
     this.acceleration.add(steer);
@@ -54,21 +59,33 @@ class Form {
     this.position.add(this.velocity);
     this.acceleration.mult(0);
   }
-
   changeTarget(steer) {
     if (steer) {
-      this.target = createVector(285, 260);
+      this.target = this.position_group;
     } else {
       this.target = this.old_position;
     }
   }
+  checkPosition (){
+    return dist(this.position.x, this.position.y, this.target.x, this.target.y) < 10
+  }
+  setPositionGroup(x, y) {
+    this.position_group = createVector(x-50, y-100);
+  }
 
-  getGroup(){
-    return this.group
+  setPosition(pos){
+    if(!this.visible){
+      this.visible = true
+      this.position = pos
+    }
+    }
+    
+  getGroup() {
+    return this.group;
   }
 
   getPosition() {
-    return this.position;
+    return this.postion_temp;
   }
   getInfo() {
     return this.info;

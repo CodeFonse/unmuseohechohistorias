@@ -9,6 +9,10 @@ class filter {
       (this.counting = 0),
       (this.target = {}),
       (this.space = size);
+    this.objs.forEach(ob => {
+      ob.setPositionGroup(x, y);
+    });
+    this.all_obj = 0
   }
 
   show() {
@@ -31,7 +35,7 @@ class filter {
       let l = 6 * ring;
       total += l;
       if (this.target < total) {
-        l = Math.max(l - (total - this.target), 3, l / 3);
+       l = Math.max(l - (total - this.target), 3, l / 3);
       }
       if (ring > 1) {
         offset += 0.5 * TWO_PI / (ring - 1) / 6;
@@ -42,13 +46,29 @@ class filter {
   draw_objs(l, offset, ring) {
     for (let i = 0; i < l; i++) {
       this.counting++;
-      if (this.counting > this.target) break;
+     if (this.counting > this.target) break;
       let angle = i * TWO_PI / l;
       angle += offset;
       let x = this.x + sin(angle) * this.space * ring;
       let y = this.y + cos(angle) * this.space * ring;
-      this.objs[i]._showFilter(x, y);
-      //	ellipse(x,y,10,10)
+            //this.objs[i].setPosition(createVector(x,y))
+      this.objs[i]._showFilter(x,y);
+     //ellipse(x,y,10,10)
     }
+
+
+
+  }
+  checkPositions() {
+    let check = true;
+    this.objs.forEach(form => {
+      check = form.checkPosition();
+    });
+    return check;
+  }
+  restart(){
+    (this.count = 0),
+    (this.counting = 0),
+    (this.target = {})
   }
 }

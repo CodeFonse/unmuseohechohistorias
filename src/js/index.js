@@ -12,7 +12,7 @@ let database,
   w_button = 80,
   h_button = 35,
   animated = false,
-  filters;
+  control;
 
 function preload() {
   database = loadStrings("../../Assets/database.txt"); //original
@@ -34,7 +34,7 @@ function setup() {
       createVector(450, 550),
       createVector(750, 550)
     ];
-    filters = new createFilters(forms, positions);
+    control = new animationControl(forms, positions);
   });
   pop_up = new popUp();
 }
@@ -77,12 +77,14 @@ function aviable_positions(img) {
   });
 }
 function draw() {
-  background(100);
+  background(255);
   noStroke();
-  /* draw_form();
-  show_info();
-  filter_button();*/
-  if (filters) filters.show_filters();
+  image(img_background, 0, 0); 
+  filter_button();
+  if (control){    
+    control.show_form();   
+    show_info(); 
+  } 
 }
 
 function mousePressed() {
@@ -92,15 +94,9 @@ function mousePressed() {
     mouseY >= y_button &&
     mouseY <= y_button + h_button
   ) {
-    animateForms();
+    animated =! animated;
+   control.move(animated)  
   }
-}
-
-function animateForms() {
-  animated = !animated;
-  forms.forEach(form => {
-    form.changeTarget(animated);
-  });
 }
 
 function filter_button() {
@@ -112,13 +108,6 @@ function filter_button() {
   text("filtrar", x_button + 22, y_button + 22);
 }
 
-function draw_form() {
-  image(img_background, 0, 0);
-  forms.forEach(form => {
-    form.show();
-  });
-}
-
 function show_info() {
   let _form = captureUniqueForm();
   if (_form) {
@@ -128,7 +117,7 @@ function show_info() {
 
 function captureUniqueForm() {
   let _form = null;
-  forms.forEach(form => {
+  control.getForms().forEach(form => {
     if (form.getPosition()) {
       let d = dist(
         form.getPosition().x + global_x,
