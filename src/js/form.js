@@ -19,7 +19,7 @@ class Form {
     this._form(this.position.x + global_x, this.position.y + global_y, 10, 10,0.05);
   }
   _showFilter(x,y){
-    this._form(x, y, 10, 10, 0.001)
+    this._form(x, y, 10, 10, 0.01)
   }
   _form(x, y, w, h, vel) {
     this.changeSize(x, y);

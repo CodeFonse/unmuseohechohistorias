@@ -1,6 +1,6 @@
 class createFilters {
-  constructor(objs) {   
-    this.filters = []
+  constructor(objs, positions) {   
+    this.filters = [];
      let a = this.filter_group(objs, this.recitalesGruop),
      b = this.filter_group(objs, this.salaGroup),
      c = this.filter_group(objs, this.talleresGroup),
@@ -8,7 +8,7 @@ class createFilters {
      e = this.filter_group(objs, this.exposicionesGroup);
      Promise.all([a,b,c,d,e]).then(values => { 
         values.forEach((val, index, obj) =>{
-           let filter= this.createFilter(val,index);
+           let filter= this.createFilter(val,index,positions[index]);
            this.filters.push(filter)
         })
         console.log(this.filters);
@@ -37,8 +37,8 @@ class createFilters {
   exposicionesGroup(form) {
     return form.getGroup() == "Exposiciones";
   }
-  createFilter(objs,i) {
-    let _filter = new filter(200+(i*200), 100+(i*200), objs, 15);
+  createFilter(objs,i, pos) {
+    let _filter = new filter(pos.x, pos.y, objs, 15);
     return _filter;
   }
   show_filters(){

@@ -26,7 +26,16 @@ function setup() {
   let c = createCanvas(1200, 700);
   c.parent("root");
   pixelDensity(1);
-  initialPosition().then(forms => (filters = new createFilters(forms)));
+  initialPosition().then(forms => {
+    let positions = [
+      createVector(250, 200),
+      createVector(600, 200),
+      createVector(900, 200),
+      createVector(450, 550),
+      createVector(750, 550)
+    ];
+    filters = new createFilters(forms, positions);
+  });
   pop_up = new popUp();
 }
 
@@ -70,11 +79,10 @@ function aviable_positions(img) {
 function draw() {
   background(100);
   noStroke();
- /* draw_form();
+  /* draw_form();
   show_info();
   filter_button();*/
-  if(filters)
-   filters.show_filters()
+  if (filters) filters.show_filters();
 }
 
 function mousePressed() {
