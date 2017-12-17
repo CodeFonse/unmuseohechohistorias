@@ -6,11 +6,7 @@ let database,
   pop_up,
   font_one,
   global_x = 50,
-  global_y = 100,
-  x_button = 280,
-  y_button = 650,
-  w_button = 80,
-  h_button = 35,
+  global_y = 100, 
   animated = false,
   control;
 
@@ -37,6 +33,10 @@ function setup() {
     control = new animationControl(forms, positions);
   });
   pop_up = new popUp();
+  let button = createButton('click me');
+  button.parent("button")
+  button.class('btn')
+  button.mousePressed(press)
 }
 
 function initialPosition() {
@@ -80,33 +80,17 @@ function draw() {
   background(255);
   noStroke();
   image(img_background, 0, 0); 
-  filter_button();
   if (control){        
     control.show_form();       
     show_info(); 
   } 
 }
 
-function mousePressed() {
-  if (
-    mouseX >= x_button &&
-    mouseX <= x_button + w_button &&
-    mouseY >= y_button &&
-    mouseY <= y_button + h_button
-  ) {
+function press() {
     animated =! animated;
    control.move(animated)    
-  }
 }
 
-function filter_button() {
-  noStroke();
-  fill(255, 0, 0);
-  rect(x_button, y_button, w_button, h_button);
-  fill(255);
-  textFont(font_one, 18);
-  text("filtrar", x_button + 22, y_button + 22);
-}
 
 function show_info() {
   let _form = captureUniqueForm();
