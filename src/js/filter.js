@@ -1,5 +1,5 @@
 class filter {
-  constructor(x, y, objs, size) {
+  constructor(x, y, objs, size) {    
     (this.x = x),
       (this.y = y),
       (this.objs = objs),

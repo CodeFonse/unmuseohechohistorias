@@ -1,5 +1,6 @@
 class Form {
   constructor(position, info, img_color) {
+    this.group=split(info, '/')[0]  
     this.target = position;
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
@@ -57,6 +58,10 @@ class Form {
     } else {
       this.target = this.old_position;
     }
+  }
+
+  getGroup(){
+    return this.group
   }
 
   getPosition() {

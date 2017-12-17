@@ -3,15 +3,16 @@ let database,
   img_pixels,
   img_color,
   img_background,
-  pop_up = {},
+  pop_up,
   font_one,
   global_x = 50,
   global_y = 100,
   x_button = 280,
   y_button = 650,
   w_button = 80,
-  h_button = 35;
-animated = false;
+  h_button = 35,
+  animated = false,
+  filters;
 
 function preload() {
   database = loadStrings("../../Assets/database.txt"); //original
@@ -25,12 +26,12 @@ function setup() {
   let c = createCanvas(1200, 700);
   c.parent("root");
   pixelDensity(1);
-  initialPosition();
+  initialPosition().then(forms => (filters = new createFilters(forms)));
   pop_up = new popUp();
 }
 
 function initialPosition() {
-  aviable_positions(img_pixels)
+  return aviable_positions(img_pixels)
     .then(positions => {
       database.forEach(data => {
         let positon = ceil(random(positions.length));
@@ -82,7 +83,7 @@ function mousePressed() {
     mouseY <= y_button + h_button
   ) {
     animateForms();
-  }  
+  }
 }
 
 function animateForms() {
@@ -132,4 +133,3 @@ function captureUniqueForm() {
   });
   return _form;
 }
-
