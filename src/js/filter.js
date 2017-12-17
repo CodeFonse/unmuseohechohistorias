@@ -1,74 +1,50 @@
 class filter {
   constructor(x, y, objs, size) {
-    (this.x = x),
-      (this.y = y),
-      (this.objs = objs),
-      (this.TARGET = objs.length),
-      (this.SIZE = size),
-      (this.count = 0),
-      (this.counting = 0),
-      (this.target = {}),
-      (this.space = size);
-    this.objs.forEach(ob => {
-      ob.setPositionGroup(x, y);
-    });
-    this.all_obj = 0
+    this.total_objs = objs.length;
+    this.objs = objs;
+    this.r = 15;
+    this.vel = 0;
+    this.target = 0;
+    this.count = 0;
+    this.rings = 1;
+    this.total = 0;
+    this.counting = 0;
+    this.x = x;
+    this.y = y;
+    this.positions = [];
   }
-
-  show() {
-    let objs = this.objs,
-      offset = 0,
-      rings = 1,
-      total = 1;
-    this.count++;
-    this.target = Math.min(this.count, this.TARGET);
-    this.counting = 1;
-    while (total < this.target) {
-      total += rings * 6;
-      rings++;
-    }
-    total = 1;
-    this.draw_rings(objs, offset, rings, total);
-  }
-  draw_rings(objs, offset, rings, total) {
-    for (let ring = 1; ring < rings; ring++) {
-      let l = 6 * ring;
-      total += l;
-      if (this.target < total) {
-       l = Math.max(l - (total - this.target), 3, l / 3);
+  calculate_positions() {
+      this.count++;
+      this.counting = 0;
+      this.target = Math.min(this.count, this.total_objs);
+      while (this.total < this.target) {
+        this.total += this.rings * 6;
+        this.rings++;
       }
-      if (ring > 1) {
-        offset += 0.5 * TWO_PI / (ring - 1) / 6;
-      }
-      this.draw_objs(l, offset, ring);
-    }
+      this.total = 0;
+      for (let i = 0; i < this.rings; i++) {
+        let ring = 6 * i;
+        this.total += ring;
+        if (this.target < this.total) {
+          ring = Math.max(ring - (this.total - this.target), 3, ring / 3);
+        }
+        for (let j = 0; j < ring; j++) {         
+          if (this.counting > this.target) break;
+          let x = this.x + cos(TWO_PI / ring * j + this.vel) * this.r * i;
+          let y = this.y + sin(TWO_PI / ring * j + this.vel) * this.r * i;
+           this.move(x,y,this.counting)
+           this.counting++;
+          }
+      }      
   }
-  draw_objs(l, offset, ring) {
-    for (let i = 0; i < l; i++) {
-      this.counting++;
-     if (this.counting > this.target) break;
-      let angle = i * TWO_PI / l;
-      angle += offset;
-      let x = this.x + sin(angle) * this.space * ring;
-      let y = this.y + cos(angle) * this.space * ring;
-            //this.objs[i].setPosition(createVector(x,y))
-      this.objs[i]._showFilter(x,y);
-     //ellipse(x,y,10,10)
-    }
-
-
-
+  move(x,y,i) {
+    if(this.objs[i])
+     this.objs[i].changeTarget(createVector(x,y));
   }
-  checkPositions() {
-    let check = true;
+
+  initialPosition(){
     this.objs.forEach(form => {
-      check = form.checkPosition();
+      form.changeTarget(false);
     });
-    return check;
-  }
-  restart(){
-    (this.count = 0),
-    (this.counting = 0),
-    (this.target = {})
   }
 }

@@ -28,11 +28,11 @@ function setup() {
   pixelDensity(1);
   initialPosition().then(forms => {
     let positions = [
-      createVector(250, 200),
-      createVector(600, 200),
-      createVector(900, 200),
-      createVector(450, 550),
-      createVector(750, 550)
+      createVector(250, 150),
+      createVector(600, 150),
+      createVector(900, 150),
+      createVector(450, 450),
+      createVector(750, 450)
     ];
     control = new animationControl(forms, positions);
   });
@@ -81,8 +81,8 @@ function draw() {
   noStroke();
   image(img_background, 0, 0); 
   filter_button();
-  if (control){    
-    control.show_form();   
+  if (control){        
+    control.show_form();       
     show_info(); 
   } 
 }
@@ -95,7 +95,7 @@ function mousePressed() {
     mouseY <= y_button + h_button
   ) {
     animated =! animated;
-   control.move(animated)  
+   control.move(animated)    
   }
 }
 

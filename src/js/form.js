@@ -6,7 +6,7 @@ class Form {
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
     this.old_position = createVector(position.x, position.y);
-    this.position = createVector(random(-200, 700), random(-200, 700));
+    this.position = position //createVector(random(-200, 700), random(-200, 700));
     this.info = info;
     this.color = img_color.get(position.x, position.y);
     this.angle = random(10000);
@@ -23,10 +23,7 @@ class Form {
         10,
         0.05
       );    
-  }
-  _showFilter(x, y) {
-    this._form(x, y, 10, 10, 0.005);
-  }
+  }  
   _form(x, y, w, h, vel) {
     this.changeSize(x, y);
     fill(this.color[0], this.color[1], this.color[2]);
@@ -38,7 +35,6 @@ class Form {
     this.angle += vel;
     pop();
   }
-
   changeSize(x, y) {
     if (dist(mouseX, mouseY, x, y) < 30) this.size = 1;
     else this.size = 1.5;
@@ -61,31 +57,17 @@ class Form {
   }
   changeTarget(steer) {
     if (steer) {
-      this.target = this.position_group;
+      this.target = steer;
     } else {
       this.target = this.old_position;
     }
-  }
-  checkPosition (){
-    return dist(this.position.x, this.position.y, this.target.x, this.target.y) < 10
-  }
-  setPositionGroup(x, y) {
-    this.position_group = createVector(x-50, y-100);
-  }
-
-  setPosition(pos){
-    if(!this.visible){
-      this.visible = true
-      this.position = pos
-    }
-    }
-    
+  }    
   getGroup() {
     return this.group;
   }
 
   getPosition() {
-    return this.postion_temp;
+    return this.position;
   }
   getInfo() {
     return this.info;

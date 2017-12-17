@@ -2,20 +2,19 @@ class animationControl {
   constructor(objs, positions) {
     this.objs = objs;
     this.create_all(objs, positions);
-    this.playAnimation = false;
-    this.animated =false
+    this.animated=false
   }
   create_all(objs, positions) {
     this.filters = [];
-    let a = this.filter_group(objs, this.recitalesGruop),
-      b = this.filter_group(objs, this.salaGroup),
-      c = this.filter_group(objs, this.talleresGroup),
-      d = this.filter_group(objs, this.conciertosGroup),
-      e = this.filter_group(objs, this.exposicionesGroup);
-    Promise.all([a, b, c, d, e]).then(values => {
+    this.a = this.filter_group(objs, this.recitalesGruop);
+    this.b = this.filter_group(objs, this.salaGroup);
+    this.c = this.filter_group(objs, this.talleresGroup);
+    this.d = this.filter_group(objs, this.conciertosGroup);
+    this.e = this.filter_group(objs, this.exposicionesGroup);
+    Promise.all([this.a, this.b, this.c, this.d,this.e]).then(values => {
       values.forEach((val, index, obj) => {
-        let filter = this.createFilter(val, index, positions[index]);
-        this.filters.push(filter);
+        let f =  this.createFilter(val, index, positions[index]);
+        this.filters.push(f)
       });
     });
   }
@@ -46,47 +45,23 @@ class animationControl {
     return _filter;
   }
   show_form() {
-      this.objs.forEach(form => {
-       form.show();
-      });
-
-     if(this.animated) this.show_filters()
-      
-    if(this.playAnimation){
-      this.animated = this.cheackPositions()
-    }   
-  }
-
-  move(startAnimation) {
-  this.playAnimation = startAnimation;
-    if(!animated){
-       this.animated = false
-       this.restart()
-      }
+    
+    this.filters.forEach(filter=>{
+    if(this.animated)
+      filter.calculate_positions()
+    else
+      filter.initialPosition()
+    
+    })  
+    
     this.objs.forEach(form => {
-      form.changeTarget(startAnimation);
-    });
+       form.show();
+    })
   }
-
-  cheackPositions() {
-    let check = true;
-    this.filters.forEach(filter => {
-      check = filter.checkPositions();
-    });
-    return check;
+  move(startAnimation) {  
+    this.animated=startAnimation
   }
-  restart(){
-    this.filters.forEach(filter => {
-      filter.restart();
-    });
-  }
-
-  show_filters() {
-    this.filters.forEach(filter => {
-        filter.show();
-    });
-  }
-  getForms (){
+  getForms(){
     return this.objs
   }
 }
