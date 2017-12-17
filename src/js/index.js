@@ -68,11 +68,13 @@ function aviable_positions(img) {
   });
 }
 function draw() {
-  background(255);
+  background(100);
   noStroke();
-  draw_form();
+ /* draw_form();
   show_info();
-  filter_button();
+  filter_button();*/
+  if(filters)
+   filters.show_filters()
 }
 
 function mousePressed() {

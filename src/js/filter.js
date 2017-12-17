@@ -1,5 +1,5 @@
 class filter {
-  constructor(x, y, objs, size) {    
+  constructor(x, y, objs, size) {
     (this.x = x),
       (this.y = y),
       (this.objs = objs),
@@ -8,7 +8,7 @@ class filter {
       (this.count = 0),
       (this.counting = 0),
       (this.target = {}),
-      (this.space = size * 2);
+      (this.space = size);
   }
 
   show() {
@@ -19,7 +19,6 @@ class filter {
     this.count++;
     this.target = Math.min(this.count, this.TARGET);
     this.counting = 1;
-
     while (total < this.target) {
       total += rings * 6;
       rings++;
@@ -37,21 +36,19 @@ class filter {
       if (ring > 1) {
         offset += 0.5 * TWO_PI / (ring - 1) / 6;
       }
-	 // objs[0].show(this.x, this.y, this.SIZE);
-	 ellipse(x,y,10,10)
-      this.draw_objs(l)
+      this.draw_objs(l, offset, ring);
     }
   }
-  draw_objs(l){
-	for (let i = 0; i < l; i++) {
-        this.counting++;
-        if (this.counting > this.target) break;
-        let angle = i * TWO_PI / l;
-        angle += offset;
-        let x = this.x + sin(angle) * this.space * ring;
-        let y = this.y + cos(angle) * this.space * ring;
-		//objs[i].show_fil(x, y, this.SIZE);
-		ellipse(x,y,10,10)
-      }
+  draw_objs(l, offset, ring) {
+    for (let i = 0; i < l; i++) {
+      this.counting++;
+      if (this.counting > this.target) break;
+      let angle = i * TWO_PI / l;
+      angle += offset;
+      let x = this.x + sin(angle) * this.space * ring;
+      let y = this.y + cos(angle) * this.space * ring;
+      this.objs[i]._showFilter(x, y);
+      //	ellipse(x,y,10,10)
+    }
   }
 }

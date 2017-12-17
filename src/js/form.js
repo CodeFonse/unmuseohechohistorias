@@ -14,20 +14,23 @@ class Form {
     this.angle = random(10000);
     this.size = 1.5;
   }
-  show() {
-    fill(this.color[0], this.color[1], this.color[2]);
+  show() {    
     this.animate();
-    this._form(this.position.x + global_x, this.position.y + global_y, 10, 10);
+    this._form(this.position.x + global_x, this.position.y + global_y, 10, 10,0.05);
   }
-  _form(x, y, w, h) {
+  _showFilter(x,y){
+    this._form(x, y, 10, 10, 0.001)
+  }
+  _form(x, y, w, h, vel) {
     this.changeSize(x, y);
+    fill(this.color[0], this.color[1], this.color[2]);
     push();
     translate(x, y);
     rotate(this.angle);
     rectMode(CENTER);
     rect(0, 0, w * this.size, h * this.size);
-    pop();
-    this.angle += 0.05;
+    this.angle += vel;
+    pop();   
   }
 
   changeSize(x, y) {
