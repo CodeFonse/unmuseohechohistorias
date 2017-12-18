@@ -24,7 +24,7 @@ function setup() {
   pixelDensity(1);
   initialPosition().then(forms => {
     let positions = [
-      createVector(250, 150),
+      createVector(200, 150),
       createVector(600, 150),
       createVector(900, 150),
       createVector(450, 450),
@@ -111,6 +111,7 @@ function captureUniqueForm() {
       );
       if (d < 5) {
         _form = form;
+        _form.setSelected()
       }
     }
   });

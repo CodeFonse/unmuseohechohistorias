@@ -6,28 +6,33 @@ class Form {
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
     this.old_position = createVector(position.x, position.y);
-    this.position = position //createVector(random(-200, 700), random(-200, 700));
+    this.position = createVector(random(-200, 700), random(-200, 700));
     this.info = info;
     this.color = img_color.get(position.x, position.y);
     this.angle = random(10000);
     this.size = 1.5;
     this.visible = false;
-    this.postion_temp = position
+    this.postion_temp = position;
+    this.selected = false;
   }
   show() {
-      this.animate();
-      this._form(
-        this.position.x + global_x,
-        this.position.y + global_y,
-        10,
-        10,
-        0.05
-      );    
-  }  
+    this.animate();
+    this._form(
+      this.position.x + global_x,
+      this.position.y + global_y,
+      10,
+      10,
+      0.05
+    );
+  }
   _form(x, y, w, h, vel) {
     this.changeSize(x, y);
     fill(this.color[0], this.color[1], this.color[2]);
     push();
+    if (this.selected) {
+      stroke("red");
+      strokeWeight(4);
+    }
     translate(x, y);
     rotate(this.angle);
     rectMode(CENTER);
@@ -36,8 +41,9 @@ class Form {
     pop();
   }
   changeSize(x, y) {
-    if (dist(mouseX, mouseY, x, y) < 30) this.size = 1;
-    else this.size = 1.5;
+    if (dist(mouseX, mouseY, x, y) < 30 && !this.selected) this.size = 1;
+    else if (!this.selected) this.size = 1.5;
+    if (dist(mouseX, mouseY, x, y) > 5) this.selected = false;
   }
   animate() {
     let maxspeed = 4,
@@ -61,7 +67,7 @@ class Form {
     } else {
       this.target = this.old_position;
     }
-  }    
+  }
   getGroup() {
     return this.group;
   }
@@ -71,6 +77,12 @@ class Form {
   }
   getInfo() {
     return this.info;
+  }
+  setSelected() {
+    if (!this.selected) {
+      this.selected = !this.selected;
+      this.size = 2;
+    }
   }
 }
 //----End class

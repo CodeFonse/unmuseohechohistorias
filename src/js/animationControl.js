@@ -2,7 +2,7 @@ class animationControl {
   constructor(objs, positions) {
     this.objs = objs;
     this.create_all(objs, positions);
-    this.animated=false
+    this.animated = false;
   }
   create_all(objs, positions) {
     this.filters = [];
@@ -11,10 +11,17 @@ class animationControl {
     this.c = this.filter_group(objs, this.talleresGroup);
     this.d = this.filter_group(objs, this.conciertosGroup);
     this.e = this.filter_group(objs, this.exposicionesGroup);
-    Promise.all([this.a, this.b, this.c, this.d,this.e]).then(values => {
+    let titles = [
+      "Recitales",
+      "Sala",
+      "Talleres",
+      "Conciertos",
+      "Exposiciones"
+    ];
+    Promise.all([this.a, this.b, this.c, this.d, this.e]).then(values => {
       values.forEach((val, index, obj) => {
-        let f =  this.createFilter(val, index, positions[index]);
-        this.filters.push(f)
+        let f = this.createFilter(val, index, positions[index], titles[index]);
+        this.filters.push(f);
       });
     });
   }
@@ -40,28 +47,26 @@ class animationControl {
   exposicionesGroup(form) {
     return form.getGroup() == "Exposiciones";
   }
-  createFilter(objs, i, pos) {
-    let _filter = new filter(pos.x, pos.y, objs, 15);
+  createFilter(objs, i, pos, title) {
+    let _filter = new filter(pos.x, pos.y, objs, title);
     return _filter;
   }
   show_form() {
-    
-    this.filters.forEach(filter=>{
-    if(this.animated)
-      filter.calculate_positions()
-    else
-      filter.initialPosition()
-    
-    })  
-    
     this.objs.forEach(form => {
-       form.show();
-    })
+      form.show();
+    });
+
+    this.filters.forEach(filter => {
+      if (this.animated) {
+        filter.calculate_positions();
+        filter.info();
+      } else filter.initialPosition();
+    });    
   }
-  move(startAnimation) {  
-    this.animated=startAnimation
+  move(startAnimation) {
+    this.animated = startAnimation;
   }
-  getForms(){
-    return this.objs
+  getForms() {
+    return this.objs;
   }
 }
