@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/animation.css">
+    <link rel="stylesheet" href="./css/showYtVideo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             padding: 0;
@@ -19,142 +21,176 @@
     </style>
     <link rel="import" href="./imports.html">
 </head>
+
 <body>
     <div class="_top">
-    <div class="head">
-       <img  class="title" src="../Assets/Images/title_img.png" alt="El museo Hoy">   
-        <p class="description">
-            Te invitamos a conocer las diferentes historias que se encuentran dentro de la figura y hacen referencia a las experiencias
-            y opiniones de la gene con respecto al Museo Rayo.
-        </p>
+        <div class="head">
+            <img class="title" src="../Assets/Images/title_img.png" alt="El museo Hoy">
+            <p class="description">
+                Te invitamos a conocer las diferentes historias que se encuentran dentro de la figura y hacen referencia a las experiencias
+                y opiniones de la gene con respecto al Museo Rayo.
+            </p>
+        </div>
+        <nav>
+            <section>
+                <div>
+                    <a selected="selected" class="hvr-underline-from-center" href="./index.html"> Conoce el proceso</a>
+                </div>
+                <div>
+                    <a class="hvr-underline-from-center show-modal" href="#video"> Vídeo</a>
+                </div>
+                <div>
+                    <a class="hvr-underline-from-center" href="http://museorayo.co/principal.php" target="_blank"> Museo</a>
+                </div>
+                <div>
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <i class="fa fa-facebook fa-lg"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="fa fa-twitter fa-lg"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <i class="fa fa-youtube fa-lg"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <i class="fa fa-instagram fa-lg"></i>
+                    </a>
+                </div>
+            </section>
+        </nav>
     </div>
-    <nav>
-            
-        <section>
-        <div>   <a selected="selected" class="hvr-underline-from-center" href="#"> Conoce el proceso</a> </div>
-        <div>   <a class="hvr-underline-from-center" href=""> Vídeo</a> </div>
-        <div>   <a class="hvr-underline-from-center" href="http://museorayo.co/principal.php" target="_blank"> Museo</a> </div>
-    </section>
-    </nav>
-</div>
     <!-- -------------- -->
-    <div class="container">    
-    
-     <div id="root"></div>
-    <div id="button"></div>
-    
-<!-- end container -->
-</div>
-<!-- --------------- -->
+    <div class="container">
 
+        <div id="root"></div>
+        <div id="button"></div>
 
-<div class="con">
+        <!-- end container -->
+    </div>
+    <!-- --------------- -->
+    <div class="con">
         <div class="bubble-wrap">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-      </div>
-      </div>
-
-
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="./js/jquery.showYtVideo.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.show-modal').on('click', function () {
+                $.showYtVideo({
+                    videoId: 'uVdV-lxRPFo'
+                });
+            });
+        });
+    </script>
     <!-- --------- -->
 
 </body>
+
 </html>
