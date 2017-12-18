@@ -48,17 +48,21 @@ class filter {
     });
   }
   info() {
-    fill(255)   
-    let x = this.x + 60
-    let y = this.y + 100
-    rectMode(CENTER)
-    rect(x,y,140,50)
+    push();
+    fill(255);
+    let x = this.x + 60;
+    let y = this.y + 100;
+    rectMode(CENTER);
+    rect(x, y, 140, 50);
     fill(0);
-    textAlign(CENTER)
+    textAlign(CENTER);
     textFont(font_one, 20);
     text(this.title, x, y);
-    fill(255,0,0);
-    textSize(15)
-    text(this.objs.length+' personas', x, y+20);
+    fill(255, 0, 0);
+    textSize(15);
+    text(this.objs.length + " personas", x, y + 20);
+    textAlign(CORNER);
+    rectMode(CORNER);
+    pop();
   }
 }

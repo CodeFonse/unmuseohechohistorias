@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: "fuente";
   src: url("../Assets/Fonts/PrestigeEliteStd-Bd.otf");
@@ -6,9 +5,9 @@
 body {
   font-family: "fuente";
   font-size: 1.2em;
-  height: 100vh;  
+  height: 100vh;
 }
-.container{
+.container {
   padding-top: 80px;
   position: relative;
   width: 100%;
@@ -16,9 +15,9 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items:  center;
+  align-items: center;
 }
-.con{
+.con {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -32,17 +31,17 @@ body {
   align-items: center;
   z-index: -1;
 }
-#root{
+#root {
   margin-left: 390px;
 }
-#button{
+#button {
   margin-right: 150px;
 }
-.head{
- position: absolute;
+.head {
+  position: absolute;
   width: 620px;
   height: 450px;
-  z-index: 1;  
+  z-index: 1;
   padding-left: 50px;
   margin-top: 20px;
 }

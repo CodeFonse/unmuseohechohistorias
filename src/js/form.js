@@ -38,6 +38,7 @@ class Form {
     rectMode(CENTER);
     rect(0, 0, w * this.size, h * this.size);
     this.angle += vel;
+    rectMode(CORNER);
     pop();
   }
   changeSize(x, y) {

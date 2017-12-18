@@ -61,7 +61,7 @@ class animationControl {
         filter.calculate_positions();
         filter.info();
       } else filter.initialPosition();
-    });    
+    });
   }
   move(startAnimation) {
     this.animated = startAnimation;

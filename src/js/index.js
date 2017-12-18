@@ -6,7 +6,7 @@ let database,
   pop_up,
   font_one,
   global_x = 50,
-  global_y = 100, 
+  global_y = 100,
   animated = false,
   control;
 
@@ -33,10 +33,10 @@ function setup() {
     control = new animationControl(forms, positions);
   });
   pop_up = new popUp();
-  let button = createButton('click me');
-  button.parent("button")
-  button.class('btn')
-  button.mousePressed(press)
+  let button = createButton("click me");
+  button.parent("button");
+  button.class("btn");
+  button.mousePressed(press);
 }
 
 function initialPosition() {
@@ -79,18 +79,17 @@ function aviable_positions(img) {
 function draw() {
   background(255);
   noStroke();
-  image(img_background, 0, 0); 
-  if (control){        
-    control.show_form();       
-    show_info(); 
-  } 
+  image(img_background, 0, 0);
+  if (control) {
+    control.show_form();
+    show_info();
+  }
 }
 
 function press() {
-    animated =! animated;
-   control.move(animated)    
+  animated = !animated;
+  control.move(animated);
 }
-
 
 function show_info() {
   let _form = captureUniqueForm();
@@ -111,7 +110,7 @@ function captureUniqueForm() {
       );
       if (d < 5) {
         _form = form;
-        _form.setSelected()
+        _form.setSelected();
       }
     }
   });
