@@ -127,3 +127,9 @@ a:active {
   left: 0;
   right: 0;
 }
+
+/* --------------- */
+.sliderbarContainer{
+  padding-top: 50px;
+  padding-left: 130px;
+}

@@ -19,11 +19,9 @@
             vertical-align: top;
         }
     </style>
-    
-    <link rel="icon" 
-      type="image/png" 
-      href="./favicon.ico"> 
-      
+
+    <link rel="icon" type="image/png" href="./favicon.ico">
+
     <link rel="import" href="./imports.html">
 </head>
 
@@ -32,27 +30,39 @@
         <div class="head">
             <img class="title" src="../Assets/Images/title_img.png" alt="El museo Hoy">
             <p class="description">
-               "La mariposa es bella en sí misma, pero en comunidad es todo un espectaculo"
-               <br>
-                <em>-Omar Rayo, 2009- </em> 
-            </b>
-              <p>
-               <strong> Instrucciones:</strong> <br>
-               Mueve el mouse por encima de las particulas que componen la mariposa para descubrir las experiencias vividas
-               alrededor del museo.
-               
-               </p>
-               <p>
-               Puedes cambiar la visualización de los datos presionando el botón en la parte inferior de la pantalla.
+                "La mariposa es bella en sí misma, pero en comunidad es todo un espectaculo"
+                <br>
+                <em>-Omar Rayo, 2009- </em>
+                </b>
+                <p>
+                    <strong> Instrucciones:</strong>
+                    <br> Mueve el mouse por encima de las particulas que componen la mariposa para descubrir las experiencias
+                    vividas alrededor del museo.
+
+                </p>
+                <p>
+                    Puedes cambiar la visualización de los datos presionando el botón en la parte inferior de la pantalla.
             </p>
+           <div class="sliderbarContainer">
+            <div class="range">
+                <input type="range" min="1" max="4" steps="1" value="1">
+              </div>
+              
+              <ul class="range-labels">
+                <li class="active selected">Uno</li>
+                <li>Dos</li>
+                <li>Tres</li>
+                <li>Cuatro</li>
+              </ul>
+           </div>
         </div>
         <nav>
             <section>
-                
+
                 <div>
                     <a class="hvr-underline-from-center show-modal" href="#video"> Ver documental</a>
                 </div>
-                
+
                 <div>
                     <a class="hvr-underline-from-center" href="http://museorayo.co/principal.php" target="_blank">Web del Museo</a>
                 </div>
@@ -189,6 +199,7 @@
     </div>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="./js/jquery.showYtVideo.js"></script>
+    <script src="js/sliderbar.js" type="text/javascript"></script>
     <script>
         jQuery(document).ready(function ($) {
             $('.show-modal').on('click', function () {
