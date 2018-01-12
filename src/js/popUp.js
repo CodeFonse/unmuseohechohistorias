@@ -23,7 +23,7 @@ class popUp {
   show_text(info, x, y) {
     this.info = info;
     let splitString = split(info, "/");
-    let text_lines = splitTokens(splitString[3], ".");
+    let text_lines = split(splitString[4], ".");
     let space_text = 10;
     let size_delimter_line = textWidth(text_lines[0]) + space_text;
     noStroke();

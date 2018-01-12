@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Museo Rayo</title>
+    <title>Un Museo Hecho Historias</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/animation.css">
@@ -19,6 +19,11 @@
             vertical-align: top;
         }
     </style>
+    
+    <link rel="icon" 
+      type="image/png" 
+      href="./favicon.ico"> 
+      
     <link rel="import" href="./imports.html">
 </head>
 
@@ -27,38 +32,42 @@
         <div class="head">
             <img class="title" src="../Assets/Images/title_img.png" alt="El museo Hoy">
             <p class="description">
-                Te invitamos a conocer las diferentes historias que se encuentran dentro de la figura y hacen referencia a las experiencias
-                y opiniones de la gene con respecto al Museo Rayo.
+               "La mariposa es bella en sí misma, pero en comunidad es todo un espectaculo"
+               <br>
+                <em>-Omar Rayo, 2009- </em> 
+            </b>
+              <p>
+               <strong> Instrucciones:</strong> <br>
+               Mueve el mouse por encima de las particulas que componen la mariposa para descubrir las experiencias vividas
+               alrededor del museo.
+               
+               </p>
+               <p>
+               Puedes cambiar la visualización de los datos presionando el botón en la parte inferior de la pantalla.
             </p>
         </div>
         <nav>
             <section>
+                
                 <div>
-                    <a selected="selected" class="hvr-underline-from-center" href="./index.html"> Conoce el proceso</a>
+                    <a class="hvr-underline-from-center show-modal" href="#video"> Ver documental</a>
+                </div>
+                
+                <div>
+                    <a class="hvr-underline-from-center" href="http://museorayo.co/principal.php" target="_blank">Web del Museo</a>
                 </div>
                 <div>
-                    <a class="hvr-underline-from-center show-modal" href="#video"> Vídeo</a>
-                </div>
-                <div>
-                    <a class="hvr-underline-from-center" href="http://museorayo.co/principal.php" target="_blank"> Museo</a>
-                </div>
-                <div>
-                    <a href="https://www.facebook.com/" target="_blank">
+                    <a href="https://www.facebook.com/museorayo1981/" target="_blank">
                         <i class="fa fa-facebook fa-lg"></i>
                     </a>
                 </div>
                 <div>
-                    <a href="https://twitter.com/" target="_blank">
+                    <a href="https://twitter.com/museorayo?lang=es" target="_blank">
                         <i class="fa fa-twitter fa-lg"></i>
                     </a>
                 </div>
                 <div>
-                    <a href="https://www.youtube.com/" target="_blank">
-                        <i class="fa fa-youtube fa-lg"></i>
-                    </a>
-                </div>
-                <div>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="http://instagram.com/museorayo" target="_blank">
                         <i class="fa fa-instagram fa-lg"></i>
                     </a>
                 </div>
@@ -184,7 +193,7 @@
         jQuery(document).ready(function ($) {
             $('.show-modal').on('click', function () {
                 $.showYtVideo({
-                    videoId: 'uVdV-lxRPFo'
+                    videoId: 'ScRaPT8_ZvA'
                 });
             });
         });

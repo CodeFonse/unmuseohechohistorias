@@ -1,6 +1,7 @@
 class Form {
   constructor(position, info, img_color) {
-    this.group = split(info, "/")[0];
+    let infoTemp = split(info, "/");
+    this.group = infoTemp[0];
     this.position_group = {};
     this.target = position;
     this.velocity = createVector(0, 0);
@@ -14,10 +15,12 @@ class Form {
     this.visible = false;
     this.postion_temp = position;
     this.selected = false;
+    this.gender = infoTemp[3];
+    this.age = infoTemp[4];
   }
   show() {
     this.animate();
-    this._form(
+    this.figure(
       this.position.x + global_x,
       this.position.y + global_y,
       10,
@@ -25,7 +28,7 @@ class Form {
       0.05
     );
   }
-  _form(x, y, w, h, vel) {
+  figure(x, y, w, h, vel) {
     this.changeSize(x, y);
     fill(this.color[0], this.color[1], this.color[2]);
     push();
@@ -72,7 +75,12 @@ class Form {
   getGroup() {
     return this.group;
   }
-
+  getAge(){
+    return this.age;
+  }
+  getGender(){
+    return this.gender;
+  }
   getPosition() {
     return this.position;
   }

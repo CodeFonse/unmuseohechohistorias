@@ -7,7 +7,7 @@ let database,
   font_one,
   global_x = 50,
   global_y = 100,
-  animated = false,
+  animationInPosition = 0,
   control;
 
 function preload() {
@@ -24,16 +24,25 @@ function setup() {
   pixelDensity(1);
   initialPosition().then(forms => {
     let positions = [
-      createVector(200, 150),
+      createVector(200, 150), // Group one
       createVector(600, 150),
       createVector(900, 150),
       createVector(450, 450),
-      createVector(750, 450)
+      createVector(750, 450),
+      createVector(width/4, height/2), //Men
+      createVector(width-width/4, height/2), //Women
+      createVector(100, 150),// 1-10
+      createVector(350, 150),// 11-20
+      createVector(600, 150),// 21-30
+      createVector(850, 150),// 31-40
+      createVector(250, 450),// 41-50
+      createVector(450, 450),// 51-60
+      createVector(650, 450),// 61-70
     ];
     control = new animationControl(forms, positions);
   });
   pop_up = new popUp();
-  let button = createButton("click me");
+  let button = createButton("Cambiar Visualización");
   button.parent("button");
   button.class("btn");
   button.mousePressed(press);
@@ -87,8 +96,11 @@ function draw() {
 }
 
 function press() {
-  animated = !animated;
-  control.move(animated);
+  if(animationInPosition<=2){
+    animationInPosition++;
+  }else animationInPosition=0;
+  
+  control.move(animationInPosition);
 }
 
 function show_info() {

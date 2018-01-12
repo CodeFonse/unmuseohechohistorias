@@ -53,7 +53,7 @@ class filter {
     let x = this.x + 60;
     let y = this.y + 100;
     rectMode(CENTER);
-    rect(x, y, 140, 50);
+    rect(x, y, 225, 50);
     fill(0);
     textAlign(CENTER);
     textFont(font_one, 20);

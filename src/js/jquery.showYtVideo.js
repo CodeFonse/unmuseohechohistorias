@@ -9,7 +9,7 @@
     $.showYtVideo = function(options) {
 
         options = $.extend({
-            modalSize: 'm',
+            modalSize: 'l',
             shadowOpacity: 0.5,
             shadowColor: '#000',
             clickOutside: 1,
