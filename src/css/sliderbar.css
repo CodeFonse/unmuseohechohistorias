@@ -1,7 +1,3 @@
-body {
-  padding: 100px;
-}
-
 .range {
   position: relative;
   width: 275px;
@@ -21,7 +17,7 @@ body {
   height: 18px;
   margin: -8px 0  0;
   border-radius: 50%;
-  background: #37adbf;
+  background: #d68812;
   cursor: pointer;
   border: 0 !important;
 }
@@ -30,7 +26,7 @@ body {
   height: 18px;
   margin: -8px 0  0;
   border-radius: 50%;
-  background: #37adbf;
+  background: #d68812;
   cursor: pointer;
   border: 0 !important;
 }
@@ -39,7 +35,7 @@ body {
   height: 18px;
   margin: -8px 0  0;
   border-radius: 50%;
-  background: #37adbf;
+  background: #d68812;
   cursor: pointer;
   border: 0 !important;
 }
@@ -100,10 +96,10 @@ body {
   border-radius: 50%;
 }
 .range-labels .active {
-  color: #37adbf;
+  color: #d68812;
 }
 .range-labels .selected::before {
-  background: #37adbf;
+  background: #d68812;
 }
 .range-labels .active.selected::before {
   display: none;

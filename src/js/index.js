@@ -8,7 +8,8 @@ let database,
   global_x = 50,
   global_y = 100,
   animationInPosition = 0,
-  control;
+  control,
+  slider;
 
 function preload() {
   database = loadStrings("../../Assets/database.txt"); //original
@@ -45,7 +46,8 @@ function setup() {
   let button = createButton("Cambiar Visualización");
   button.parent("button");
   button.class("btn");
-  button.mousePressed(press);
+  // button.mousePressed(press);
+  slider=select('#inputRange')
 }
 
 function initialPosition() {
@@ -86,22 +88,17 @@ function aviable_positions(img) {
   });
 }
 function draw() {
-  background(255);
+  background(255);  
   noStroke();
   image(img_background, 0, 0);
   if (control) {
     control.show_form();
     show_info();
+    control.move(slider.value()-1)
   }
+  
 }
 
-function press() {
-  if(animationInPosition<=2){
-    animationInPosition++;
-  }else animationInPosition=0;
-  
-  control.move(animationInPosition);
-}
 
 function show_info() {
   let _form = captureUniqueForm();
