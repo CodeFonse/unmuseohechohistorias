@@ -103,7 +103,7 @@ function draw() {
 function show_info() {
   let _form = captureUniqueForm();
   if (_form) {
-    pop_up.show(true, mouseX, mouseY, _form.getInfo());
+    pop_up.show(true, this, _form.getInfo());
   }
 }
 
