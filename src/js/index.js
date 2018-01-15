@@ -48,6 +48,11 @@ function setup() {
   // button.id("btn");
   // button.mousePressed(press);
   slider=select('#inputRange')
+
+  soundOne.play() 
+  playing=true;
+  indexTemp=0;
+  $(".btn").text("pause");
 }
 
 function initialPosition() {

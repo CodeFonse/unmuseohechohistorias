@@ -148,3 +148,8 @@ a:active {
   padding-top: 50px;
   padding-left: 130px;
 }
+
+.buttonSoundContainer{
+  display: flex;
+  width: 300px;
+}
