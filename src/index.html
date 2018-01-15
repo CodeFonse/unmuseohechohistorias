@@ -57,7 +57,7 @@
             </p>
            <div class="sliderbarContainer">
             <div class="range">
-                <input id="inputRange" type="range" min="1" max="4" steps="1" value="1">
+                <input id="inputRange" type="range" min="1" max="4" steps="1" value="1" onchange="changeSound(this.value)">
               </div>
               
               <ul class="range-labels">
@@ -101,7 +101,9 @@
     <div class="container">
 
         <div id="root"></div>
-        <div id="button"></div>
+        <div id="button">
+            <button class="btn" onclick="soundState()">Play</button>
+        </div>
 
         <!-- end container -->
     </div>
@@ -211,12 +213,12 @@
         </div>
     </div>
 
-
-   
-
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.7/howler.core.min.js"></script>
+<script src="js/sound.js" type="text/javascript"></script>
     <script src="./js/jquery.showYtVideo.js"></script>
     <script src="js/sliderbar.js" type="text/javascript"></script>
+    
     <script>
         jQuery(document).ready(function ($) {
             $('.show-modal').on('click', function () {

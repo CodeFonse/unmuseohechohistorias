@@ -43,9 +43,9 @@ function setup() {
     control = new animationControl(forms, positions);
   });
   pop_up = new popUp();
-  let button = createButton("Cambiar Visualización");
-  button.parent("button");
-  button.class("btn");
+  // let button = createButton("Cambiar Visualización");
+  // button.parent("button");
+  // button.id("btn");
   // button.mousePressed(press);
   slider=select('#inputRange')
 }
